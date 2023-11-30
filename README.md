@@ -1,5 +1,5 @@
-# Algorhitms
-## The most popular javascript algorhitms
+# Javascript Data Structures and Algorithms
+## The most popular javascript data structures and algorithms
 
 To run the project you need to install npm packages.
 
