@@ -46,4 +46,47 @@ describe('linked list testing', () => {
     expect(numberList.search(5)).toBe(false);
     expect(numberList.search(3)).toBe(false);
   });
+
+  test('check insert method', () => {
+    const numberList = new LinkedList();
+
+    numberList.insert(0, -5);
+    numberList.insert(1, 5);
+    numberList.add(2);
+    numberList.add(3);
+    numberList.insert(5, 3);
+
+    expect(numberList.search(0)).toBe(true);
+    expect(numberList.search(1)).toBe(true);
+    expect(numberList.search(5)).toBe(true);
+  });
+
+  test('check delete head method', () => {
+    const numberList = new LinkedList();
+
+    expect(numberList.deleteHead()).toBe(false);
+
+    numberList.add(0);
+    numberList.add(1);
+    numberList.add(2);
+    numberList.deleteHead();
+    numberList.deleteHead();
+
+    expect(numberList.search(0)).toBe(false);
+    expect(numberList.search(1)).toBe(false);
+    expect(numberList.search(2)).toBe(true);
+  });
+
+  test('check to array method', () => {
+    const abcList = new LinkedList();
+
+    abcList.add('a');
+    abcList.add('b');
+    abcList.add('c');
+
+    const abcArray = abcList.toArray();
+
+    expect(abcArray.length).toBe(3);
+    expect(abcArray).toEqual(expect.arrayContaining(['a', 'b', 'c']));
+  });
 });

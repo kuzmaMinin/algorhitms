@@ -69,4 +69,71 @@ export default class LinkedList {
     }
     return false;
   }
+
+  insert(value, rawIndex) {
+    const index = rawIndex < 0 ? 0 : rawIndex;
+
+    if (rawIndex === 0) {
+      this.prepend(value);
+    } else {
+      let counter = 1;
+      const targetNode = new LinkedListNode(value);
+      let currentNode = this.head;
+
+      while (currentNode && counter !== index) {
+        currentNode = currentNode.next;
+        counter += 1;
+      }
+
+      if (currentNode) {
+        targetNode.next = currentNode.next;
+        currentNode.next = targetNode;
+      } else if (this.tail) {
+        this.tail.next = targetNode;
+        this.tail = targetNode;
+      } else {
+        this.head = targetNode;
+        this.tail = targetNode;
+      }
+    }
+    return this;
+  }
+
+  reverse() {}
+
+  deleteTail() {}
+
+  deleteHead() {
+    if (this.head === null) {
+      return false;
+    }
+
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return true;
+  }
+
+  fromArray() {}
+
+  toArray() {
+    const linkedListArray = [];
+
+    if (this.head === null) {
+      return linkedListArray;
+    }
+
+    let node = this.head;
+
+    while (node) {
+      linkedListArray.push(node.value);
+      node = node.next;
+    }
+
+    return linkedListArray;
+  }
 }
