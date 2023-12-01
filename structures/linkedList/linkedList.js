@@ -27,4 +27,46 @@ export default class LinkedList {
       this.tail = node;
     }
   }
+
+  search(value) {
+    let node = this.head;
+
+    while (node !== null && node.value !== value) {
+      node = node.next;
+    }
+
+    return node !== null;
+  }
+
+  remove(value) {
+    if (this.head === null) {
+      return false;
+    }
+
+    let node = this.head;
+
+    if (node.value === value) {
+      if (this.head === this.tail) {
+        this.head = null;
+        this.tail = null;
+      } else {
+        this.head = this.head.next;
+      }
+      return true;
+    }
+
+    while (node.next && node.next.value !== value) {
+      node = node.next;
+    }
+
+    if (node.next) {
+      if (node.next === this.tail) {
+        this.tail = node;
+        this.tail.next = null;
+      } else {
+        node.next = node.next.next;
+      }
+    }
+    return false;
+  }
 }
