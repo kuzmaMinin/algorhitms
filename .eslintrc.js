@@ -2,17 +2,17 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'jest/globals': true,
   },
   extends: 'airbnb-base',
+  plugins: ['jest'],
   overrides: [
     {
       env: {
         node: true,
-        jest: true,
       },
       files: [
         '.eslintrc.{js,cjs}',
-        '**/*.test.js',
       ],
       parserOptions: {
         sourceType: 'module',
