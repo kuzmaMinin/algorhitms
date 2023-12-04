@@ -115,4 +115,18 @@ describe('linked list testing', () => {
 
     expect(numberList.search(3)).toBe(true);
   });
+
+  test('check reverse method', () => {
+    const numberList = new LinkedList();
+
+    numberList.add(0);
+    numberList.add(1);
+    numberList.add(2);
+
+    numberList.reverse();
+
+    expect(numberList.head.value).toBe(2);
+    expect(numberList.head.next.value).toBe(1);
+    expect(numberList.tail.value).toBe(0);
+  });
 });
