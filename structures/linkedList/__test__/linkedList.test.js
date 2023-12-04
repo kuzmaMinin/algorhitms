@@ -89,4 +89,30 @@ describe('linked list testing', () => {
     expect(abcArray.length).toBe(3);
     expect(abcArray).toEqual(expect.arrayContaining(['a', 'b', 'c']));
   });
+
+  test('check delete tail method', () => {
+    const numberList = new LinkedList();
+
+    expect(numberList.deleteTail()).toBe(false);
+
+    numberList.add(0);
+    numberList.add(1);
+    numberList.add(2);
+
+    numberList.deleteTail();
+    numberList.deleteTail();
+
+    expect(numberList.search(0)).toBe(true);
+    expect(numberList.search(1)).toBe(false);
+    expect(numberList.search(2)).toBe(false);
+  });
+
+  test('check fromArray method', () => {
+    const numberList = new LinkedList();
+    const numbers = [0, 1, 2, 3];
+
+    numberList.fromArray(numbers);
+
+    expect(numberList.search(3)).toBe(true);
+  });
 });
