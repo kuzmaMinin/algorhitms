@@ -7,9 +7,9 @@ describe('linked list testing', () => {
     numberList.add(1);
     numberList.add(2);
 
-    expect(numberList.head.value).toBe(0);
-    expect(numberList.head.next.value).toBe(1);
-    expect(numberList.tail.value).toBe(2);
+    expect(numberList.head?.value).toBe(0);
+    expect(numberList.head?.next?.value).toBe(1);
+    expect(numberList.tail?.value).toBe(2);
   });
 
   test('check searching value in linked list', () => {
@@ -125,8 +125,8 @@ describe('linked list testing', () => {
 
     numberList.reverse();
 
-    expect(numberList.head.value).toBe(2);
-    expect(numberList.head.next.value).toBe(1);
-    expect(numberList.tail.value).toBe(0);
+    expect(numberList.head?.value).toBe(2);
+    expect(numberList.head?.next?.value).toBe(1);
+    expect(numberList.tail?.value).toBe(0);
   });
 });

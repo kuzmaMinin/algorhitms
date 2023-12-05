@@ -1,14 +1,16 @@
 import LinkedListNode from './linkedListNode';
+import { ILinkedList } from '../../types/ILinkedList';
+import { ILinkedListNode } from '../../types/ILinkedListNode';
 
-export default class LinkedList {
-  head = null;
+export default class LinkedList implements ILinkedList {
+  head: ILinkedListNode | null = null;
 
-  tail = null;
+  tail: ILinkedListNode | null = null;
 
-  add(value) {
+  add(value: unknown) {
     const node = new LinkedListNode(value);
 
-    if (!this.head) {
+    if (!this.head || !this.tail) {
       this.head = node;
       this.tail = node;
     } else {
@@ -17,7 +19,7 @@ export default class LinkedList {
     }
   }
 
-  prepend(value) {
+  prepend(value: unknown) {
     const node = new LinkedListNode(value);
 
     node.next = this.head;
@@ -28,7 +30,7 @@ export default class LinkedList {
     }
   }
 
-  search(value) {
+  search(value: unknown) {
     let node = this.head;
 
     while (node !== null && node.value !== value) {
@@ -38,7 +40,7 @@ export default class LinkedList {
     return node !== null;
   }
 
-  remove(value) {
+  remove(value: unknown) {
     if (this.head === null) {
       return false;
     }
@@ -70,7 +72,7 @@ export default class LinkedList {
     return false;
   }
 
-  insert(value, rawIndex) {
+  insert(value: unknown, rawIndex: number) {
     const index = rawIndex < 0 ? 0 : rawIndex;
 
     if (rawIndex === 0) {
@@ -129,7 +131,7 @@ export default class LinkedList {
 
     let node = this.head;
 
-    while (node.next.next !== null) {
+    while (node?.next && node.next.next !== null) {
       node = node.next;
     }
 
@@ -170,7 +172,7 @@ export default class LinkedList {
       return linkedListArray;
     }
 
-    let node = this.head;
+    let node: ILinkedListNode | null = this.head;
 
     while (node) {
       linkedListArray.push(node.value);
