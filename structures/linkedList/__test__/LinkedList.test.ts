@@ -1,7 +1,7 @@
-import LinkedList from '../linkedList';
+import LinkedList from '../LinkedList';
 
 describe('linked list testing', () => {
-  test('check linkedList inserting methods', () => {
+  test('check LinkedList.insert() method', () => {
     const numberList = new LinkedList();
     numberList.prepend(0);
     numberList.add(1);
@@ -12,7 +12,7 @@ describe('linked list testing', () => {
     expect(numberList.tail?.value).toBe(2);
   });
 
-  test('check searching value in linked list', () => {
+  test('check LinkedList.search() method', () => {
     const firstList = new LinkedList();
     const secondList = new LinkedList();
 
@@ -29,7 +29,7 @@ describe('linked list testing', () => {
     expect(secondList.search(5)).toBe(false);
   });
 
-  test('check remove method', () => {
+  test('check LinkedList.remove() method', () => {
     const numberList = new LinkedList();
 
     numberList.add(1);
@@ -47,7 +47,7 @@ describe('linked list testing', () => {
     expect(numberList.search(3)).toBe(false);
   });
 
-  test('check insert method', () => {
+  test('check LinkedList.insert() method', () => {
     const numberList = new LinkedList();
 
     numberList.insert(0, -5);
@@ -61,7 +61,7 @@ describe('linked list testing', () => {
     expect(numberList.search(5)).toBe(true);
   });
 
-  test('check delete head method', () => {
+  test('check LinkedList.deleteHead() method.', () => {
     const numberList = new LinkedList();
 
     expect(numberList.deleteHead()).toBe(false);
@@ -77,7 +77,7 @@ describe('linked list testing', () => {
     expect(numberList.search(2)).toBe(true);
   });
 
-  test('check to array method', () => {
+  test('check LinkedList.toArray() method', () => {
     const abcList = new LinkedList();
 
     abcList.add('a');
@@ -90,7 +90,7 @@ describe('linked list testing', () => {
     expect(abcArray).toEqual(expect.arrayContaining(['a', 'b', 'c']));
   });
 
-  test('check delete tail method', () => {
+  test('check LinkedList.deleteTail() method', () => {
     const numberList = new LinkedList();
 
     expect(numberList.deleteTail()).toBe(false);
@@ -107,7 +107,7 @@ describe('linked list testing', () => {
     expect(numberList.search(2)).toBe(false);
   });
 
-  test('check fromArray method', () => {
+  test('check LinkedList.fromArray() method', () => {
     const numberList = new LinkedList();
     const numbers = [0, 1, 2, 3];
 
@@ -116,7 +116,7 @@ describe('linked list testing', () => {
     expect(numberList.search(3)).toBe(true);
   });
 
-  test('check reverse method', () => {
+  test('check LinkedList.reverse() method', () => {
     const numberList = new LinkedList();
 
     numberList.add(0);

@@ -1,11 +1,21 @@
-import LinkedListNode from './linkedListNode';
+import LinkedListNode from './LinkedListNode';
 import { ILinkedList } from '../../types/ILinkedList';
 import { ILinkedListNode } from '../../types/ILinkedListNode';
+import Comparator from '../../utils/Comparator';
 
 export default class LinkedList implements ILinkedList {
   head: ILinkedListNode | null = null;
 
   tail: ILinkedListNode | null = null;
+
+  compare;
+
+  constructor(compareCallback?) {
+    this.head = null;
+    this.tail = null;
+
+    this.compare = new Comparator(compareCallback);
+  }
 
   add(value: unknown) {
     const node = new LinkedListNode(value);
@@ -20,8 +30,7 @@ export default class LinkedList implements ILinkedList {
   }
 
   prepend(value: unknown) {
-    const node = new LinkedListNode(value);
-
+    const node = new LinkedListNode(value, this.head);
     node.next = this.head;
     this.head = node;
 
