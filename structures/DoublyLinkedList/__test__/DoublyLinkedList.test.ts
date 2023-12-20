@@ -1,7 +1,7 @@
 import DoublyLinkedList from '../DoublyLinkedList';
 
 describe('doubly linked list testing', () => {
-  test('check add method', () => {
+  test('check DoublyLinkedList.add() method', () => {
     const numberList = new DoublyLinkedList();
     numberList.add(1);
     numberList.add(2);
@@ -12,7 +12,7 @@ describe('doubly linked list testing', () => {
     expect(numberList.head?.next?.next?.value).toBe(3);
   });
 
-  test('check search method', () => {
+  test('check DoublyLinkedList.search() method', () => {
     const numberList = new DoublyLinkedList();
     numberList.add(1);
     numberList.add(2);
@@ -21,7 +21,7 @@ describe('doubly linked list testing', () => {
     expect(numberList.search(3)).toBe(false);
   });
 
-  test('check prepend method', () => {
+  test('check DoublyLinkedList.prepend() method', () => {
     const numberList = new DoublyLinkedList();
     numberList.add(1);
     numberList.add(2);
@@ -29,7 +29,7 @@ describe('doubly linked list testing', () => {
     expect(numberList.search(1)).toBe(true);
   });
 
-  test('check deleteHead method', () => {
+  test('check DoublyLinkedList.deleteHead() method', () => {
     const numberList = new DoublyLinkedList();
 
     expect(numberList.deleteHead()).toBe(false);
@@ -41,7 +41,7 @@ describe('doubly linked list testing', () => {
     expect(numberList.head?.value).toBe('b');
   });
 
-  test('check deleteTail method', () => {
+  test('check DoublyLinkedList.deleteTail() method', () => {
     const numberList = new DoublyLinkedList();
 
     expect(numberList.deleteTail()).toBe(false);
@@ -54,7 +54,7 @@ describe('doubly linked list testing', () => {
     expect(numberList.tail?.value).toBe('a');
   });
 
-  test('check insert method', () => {
+  test('check DoublyLinkedList.insert() method', () => {
     const numberList = new DoublyLinkedList();
     numberList.add(1);
     numberList.add(2);
