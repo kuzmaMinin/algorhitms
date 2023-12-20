@@ -1,5 +1,5 @@
 import { IDoublyLinkedListNode, ILinkedListNode } from './ILinkedListNode';
-import { CompareType } from '../utils/Comparator';
+import { CompareType } from '../../utils/Comparator';
 
 interface IBaseLinkedList<T, N> {
   head: N | null;

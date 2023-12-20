@@ -1,6 +1,6 @@
 import LinkedListNode from './LinkedListNode';
-import { ILinkedList } from '../../types/ILinkedList';
-import { ILinkedListNode } from '../../types/ILinkedListNode';
+import { ILinkedList } from '../../types/structures/ILinkedList';
+import { ILinkedListNode } from '../../types/structures/ILinkedListNode';
 import Comparator from '../../utils/Comparator';
 
 export default class LinkedList implements ILinkedList {

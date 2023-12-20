@@ -1,4 +1,4 @@
-import { IDoublyLinkedList } from '../../types/ILinkedList';
+import { IDoublyLinkedList } from '../../types/structures/ILinkedList';
 import DoublyLinkedListNode from './DoublyLinkedListNode';
 import Comparator from '../../utils/Comparator';
 

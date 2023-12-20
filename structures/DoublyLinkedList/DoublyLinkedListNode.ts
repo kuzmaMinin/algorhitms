@@ -1,4 +1,4 @@
-import { IDoublyLinkedListNode } from '../../types/ILinkedListNode';
+import { IDoublyLinkedListNode } from '../../types/structures/ILinkedListNode';
 
 export default class DoublyLinkedListNode implements IDoublyLinkedListNode {
   constructor(

@@ -1,4 +1,4 @@
-import { IQueue } from '../../types/IQueue';
+import { IQueue } from '../../types/structures/IQueue';
 import LinkedList from '../LinkedList/LinkedList';
 
 export default class Queue implements IQueue {

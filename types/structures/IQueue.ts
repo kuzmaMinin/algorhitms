@@ -1,4 +1,4 @@
-import LinkedList from '../structures/LinkedList/LinkedList';
+import LinkedList from '../../structures/LinkedList/LinkedList';
 
 export interface IQueue {
   linkedList: LinkedList;

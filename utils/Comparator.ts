@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-import { IComparator } from '../types/IComparator';
+import { IComparator } from '../types/structures/IComparator';
 
 export type CompareType = (a: unknown, b: unknown) => 0 | 1 | -1;
 

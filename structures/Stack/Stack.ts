@@ -1,5 +1,5 @@
 import LinkedList from '../LinkedList/LinkedList';
-import { IStack } from '../../types/IStack';
+import { IStack } from '../../types/structures/IStack';
 
 export default class Stack implements IStack {
   linkedList;

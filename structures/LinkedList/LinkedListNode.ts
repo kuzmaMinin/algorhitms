@@ -1,4 +1,4 @@
-import { ILinkedListNode } from '../../types/ILinkedListNode';
+import { ILinkedListNode } from '../../types/structures/ILinkedListNode';
 
 export default class LinkedListNode implements ILinkedListNode {
   constructor(
