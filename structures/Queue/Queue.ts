@@ -24,3 +24,11 @@ export default class Queue implements IQueue {
     return this.linkedList.head === null;
   }
 }
+
+/**
+ * Time complexity:
+ *    Access  O(n)
+ *    Search  O(n)
+ * Insertion  O(1)
+ *  Deletion  O(1)
+ */
