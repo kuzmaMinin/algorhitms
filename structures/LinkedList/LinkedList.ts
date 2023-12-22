@@ -191,3 +191,11 @@ export default class LinkedList implements ILinkedList {
     return linkedListArray;
   }
 }
+
+/**
+ * Time complexity:
+ *    Access  O(n)
+ *    Search  O(n)
+ * Insertion  O(n)
+ *  Deletion  O(n)
+ */

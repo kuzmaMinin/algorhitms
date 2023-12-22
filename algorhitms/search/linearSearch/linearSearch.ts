@@ -19,8 +19,5 @@ export default function linearSearch<T>(
 
 /**
  * Time complexity:
- *    Access  O(n)
- *    Search  O(n)
- * Insertion  O(n)
- *  Deletion  O(n)
+ * Search  O(n)
  */
