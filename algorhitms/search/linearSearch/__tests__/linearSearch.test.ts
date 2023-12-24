@@ -1,4 +1,5 @@
 import linearSearch from '../linearSearch';
+import { compareObjectCallback } from '../../../../utils/Comparator';
 
 describe('linearSearch tests', () => {
   test('searching in array of strings', () => {
@@ -20,16 +21,7 @@ describe('linearSearch tests', () => {
   test('searching in array of objects', () => {
     const objectsList = [{ number: 1 }, { number: 2 }, { number: 3 }];
     const target = { number: 2 };
-
-    const compareCallback = (a, b) => {
-      if (a.number === b.number) {
-        return 0;
-      }
-
-      return a.number < b.number ? -1 : 1;
-    };
-
-    const matches = linearSearch(objectsList, target, compareCallback);
+    const matches = linearSearch(objectsList, target, compareObjectCallback('number'));
 
     expect(matches).toEqual(expect.arrayContaining([1]));
   });

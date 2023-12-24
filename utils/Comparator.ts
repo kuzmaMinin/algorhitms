@@ -39,3 +39,14 @@ export default class Comparator implements IComparator {
     return this.equal(a, b) || this.lessThan(a, b);
   }
 }
+
+export const compareObjectCallback = <T>(propName: string) => (a: T, b: T) => {
+  if (propName in a && propName in b) {
+    if (a[propName] === b[propName]) {
+      return 0;
+    }
+
+    return a[propName] > b[propName] ? 1 : -1;
+  }
+  throw new Error(`There is no ${propName} in params`);
+};
