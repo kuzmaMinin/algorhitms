@@ -1,4 +1,5 @@
 import bubbleSort from '../bubbleSort';
+import { compareObjectCallback } from '../../../../utils/Comparator';
 
 describe('testing bubble sorting', () => {
   test('bubble sorting number array', () => {
@@ -10,15 +11,7 @@ describe('testing bubble sorting', () => {
 
   test('bubble sorting objects array', () => {
     const input = [{ age: 30 }, { age: 20 }, { age: 10 }];
-    const compareCallback = (a, b) => {
-      if (a === b) {
-        return 0;
-      }
-
-      return a.age > b.age ? 1 : -1;
-    };
-
-    const sortedArray = bubbleSort(input, compareCallback);
+    const sortedArray = bubbleSort(input, compareObjectCallback('age'));
 
     expect(sortedArray).toEqual(expect.arrayContaining([{ age: 10 }, { age: 20 }, { age: 30 }]));
   });

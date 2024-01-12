@@ -14,25 +14,28 @@ describe('testing LinkedListNode instance', () => {
   });
 
   test('check LinkedListNode when value is object', () => {
-    const node = new LinkedListNode({ a: '1', b: 2 });
+    const input = { a: '1', b: 2 };
+    const node = new LinkedListNode(input);
 
-    expect(node.value.a).toBe('1');
-    expect(node.value.b).toBe(2);
+    expect((node.value as typeof input).a).toBe('1');
+    expect((node.value as typeof input).b).toBe(2);
   });
 
   test('check LinkedListNode when value is array', () => {
+    const input = ['a', 'b', 'c'];
     const node = new LinkedListNode(['a', 'b', 'c']);
 
-    expect(node.value.length).toBe(3);
-    expect(node.value[0]).toBe('a');
+    expect((node.value as typeof input).length).toBe(3);
+    expect((node.value as typeof input)[0]).toBe('a');
   });
 
   test('check LinkedListNode when next is defined', () => {
+    const input = { a: 1, b: '2' };
     const node = new LinkedListNode(1, new LinkedListNode({ a: 1, b: '2' }));
 
     expect(node.next).toBeDefined();
-    expect(node.next?.value.a).toBe(1);
-    expect(node.next?.value.b).toBe('2');
+    expect((node.next?.value as typeof input).a).toBe(1);
+    expect((node.next?.value as typeof input).b).toBe('2');
     expect(node.next?.next).toBeNull();
   });
 
@@ -49,9 +52,12 @@ describe('testing LinkedListNode instance', () => {
   });
 
   test('check LinkedListNode.toString() method with callback', () => {
+    const input = { a: 1, b: 2 };
     const node = new LinkedListNode({ a: 1, b: 2 });
-    const fromObjectToString = (value) => `${value.a}, ${value.b}`;
+    const fromObjectToString = (value: typeof input) => `${value.a}, ${value.b}`;
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     expect(node.toString(fromObjectToString)).toBe('1, 2');
   });
 });

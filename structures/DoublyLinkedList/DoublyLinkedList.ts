@@ -1,6 +1,6 @@
 import { IDoublyLinkedList } from '../../types/structures/ILinkedList';
 import DoublyLinkedListNode from './DoublyLinkedListNode';
-import Comparator from '../../utils/Comparator';
+import Comparator, { CompareObjectType } from '../../utils/Comparator';
 
 export default class DoublyLinkedList implements IDoublyLinkedList {
   head: DoublyLinkedListNode | null;
@@ -9,14 +9,14 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
 
   compare;
 
-  constructor(compareCallback?) {
+  constructor(compareCallback?: CompareObjectType<object>) {
     this.head = null;
     this.tail = null;
 
     this.compare = new Comparator(compareCallback);
   }
 
-  add(value) {
+  add<T>(value: T) {
     const node = new DoublyLinkedListNode(value);
 
     if (!this.head || !this.tail) {
@@ -31,7 +31,7 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
     this.tail = node;
   }
 
-  insert(value, rawIndex) {
+  insert<T>(value: T, rawIndex: number) {
     const targetIndex = rawIndex < 0 ? 0 : rawIndex;
     if (targetIndex === 0) {
       this.prepend(value);
@@ -63,7 +63,7 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
     return this;
   }
 
-  prepend(value) {
+  prepend<T>(value: T) {
     const node = new DoublyLinkedListNode(value, this.head);
 
     if (!this.head || !this.tail) {
@@ -77,7 +77,7 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
     this.head = node;
   }
 
-  remove(value) {
+  remove<T>(value: T) {
     if (!this.head) {
       return false;
     }
@@ -113,7 +113,7 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
     return false;
   }
 
-  search(value) {
+  search<T>(value: T) {
     if (!this.head) {
       return false;
     }
@@ -187,13 +187,13 @@ export default class DoublyLinkedList implements IDoublyLinkedList {
     return true;
   }
 
-  fromArray(data) {
+  fromArray(data: unknown[]) {
     data.forEach((item) => this.add(item));
     return this;
   }
 
   toArray() {
-    const resultArray = [];
+    const resultArray: unknown[] = [];
 
     if (!this.head) {
       return resultArray;

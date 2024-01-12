@@ -1,9 +1,9 @@
-import Comparator, { CompareType } from '../../../utils/Comparator';
+import Comparator, { CompareObjectType } from '../../../utils/Comparator';
 
 export default function jumpSearch<T>(
   input: T[],
   searchValue: T,
-  compareCallback?: CompareType,
+  compareCallback?: CompareObjectType<object>,
 ): number {
   if (!input.length) {
     return -1;

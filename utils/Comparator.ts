@@ -2,16 +2,16 @@
 
 import { IComparator } from '../types/structures/IComparator';
 
-export type CompareType = (a: unknown, b: unknown) => 0 | 1 | -1;
+export type CompareObjectType<T extends object> = (a: keyof T, b: keyof T) => 0 | 1 | -1;
 
 export default class Comparator implements IComparator {
   compare;
 
-  constructor(compare: CompareType = this.defaultCompare) {
-    this.compare = compare;
+  constructor(compare?: CompareObjectType<object>) {
+    this.compare = compare || this.defaultCompare;
   }
 
-  defaultCompare(a, b) {
+  defaultCompare<T>(a: T, b: T) {
     if (a === b) {
       return 0;
     }
@@ -19,28 +19,28 @@ export default class Comparator implements IComparator {
     return a < b ? -1 : 1;
   }
 
-  equal(a, b) {
-    return this.compare(a, b) === 0;
+  equal<T>(a: T, b: T) {
+    return this.compare(a as never, b as never) === 0;
   }
 
-  greaterThan(a, b) {
-    return this.compare(a, b) > 0;
+  greaterThan<T>(a: T, b: T) {
+    return this.compare(a as never, b as never) > 0;
   }
 
-  lessThan(a, b) {
-    return this.compare(a, b) < 0;
+  lessThan(a: unknown, b: unknown) {
+    return this.compare(a as never, b as never) < 0;
   }
 
-  greaterThanOrEqual(a, b) {
+  greaterThanOrEqual<T>(a: T, b: T) {
     return this.equal(a, b) || this.greaterThan(a, b);
   }
 
-  lessThanOrEqual(a, b) {
+  lessThanOrEqual<T>(a: T, b: T) {
     return this.equal(a, b) || this.lessThan(a, b);
   }
 }
 
-export const compareObjectCallback = <T>(propName: string) => (a: T, b: T) => {
+export const compareObjectCallback = <T extends object>(propName: keyof T) => (a: T, b: T) => {
   if (propName in a && propName in b) {
     if (a[propName] === b[propName]) {
       return 0;
@@ -48,5 +48,5 @@ export const compareObjectCallback = <T>(propName: string) => (a: T, b: T) => {
 
     return a[propName] > b[propName] ? 1 : -1;
   }
-  throw new Error(`There is no ${propName} in params`);
+  throw new Error(`There is no ${propName as string} in params`);
 };

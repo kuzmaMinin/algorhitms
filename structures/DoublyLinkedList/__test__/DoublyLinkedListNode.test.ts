@@ -14,25 +14,32 @@ describe('testing DoublyLinkedListNode instance', () => {
   });
 
   test('check DoublyLinkedListNode when value is object', () => {
-    const node = new DoublyLinkedListNode({ a: '1', b: 2 });
+    const inputValue = { a: '1', b: 2 };
+    const node = new DoublyLinkedListNode(inputValue);
 
-    expect(node.value.a).toBe('1');
-    expect(node.value.b).toBe(2);
+    const { a } = node.value as typeof inputValue;
+    const { b } = node.value as typeof inputValue;
+
+    expect(a).toBe('1');
+    expect(b).toBe(2);
   });
 
   test('check DoublyLinkedListNode when value is array', () => {
+    const inputValue = ['a', 'b', 'c'];
     const node = new DoublyLinkedListNode(['a', 'b', 'c']);
+    const nodeValue = node.value as typeof inputValue;
 
-    expect(node.value.length).toBe(3);
-    expect(node.value[0]).toBe('a');
+    expect(nodeValue.length).toBe(3);
+    expect(nodeValue[0]).toBe('a');
   });
 
   test('check DoublyLinkedListNode when next is defined', () => {
-    const node = new DoublyLinkedListNode(1, new DoublyLinkedListNode({ a: 1, b: '2' }));
+    const inputValue = { a: 1, b: '2' };
+    const node = new DoublyLinkedListNode(1, new DoublyLinkedListNode(inputValue));
 
     expect(node.next).toBeDefined();
-    expect(node.next?.value.a).toBe(1);
-    expect(node.next?.value.b).toBe('2');
+    expect((node.next?.value as typeof inputValue).a).toBe(1);
+    expect((node.next?.value as typeof inputValue).b).toBe('2');
   });
 
   test('check DoublyLinkedListNode when next is not defined', () => {
@@ -58,9 +65,12 @@ describe('testing DoublyLinkedListNode instance', () => {
   });
 
   test('check DoublyLinkedListNode.toString() method with callback', () => {
-    const node = new DoublyLinkedListNode({ a: 1, b: 2 });
-    const fromObjectToString = (value) => `${value.a}, ${value.b}`;
+    const inputValue = { a: 1, b: 2 };
+    const node = new DoublyLinkedListNode(inputValue);
+    const fromObjectToString = (value: typeof inputValue) => `${value.a}, ${value.b}`;
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     expect(node.toString(fromObjectToString)).toBe('1, 2');
   });
 });

@@ -1,10 +1,10 @@
 import { IDoublyLinkedListNode, ILinkedListNode } from './ILinkedListNode';
-import { CompareType } from '../../utils/Comparator';
+import Comparator from '../../utils/Comparator';
 
 interface IBaseLinkedList<T, N> {
   head: N | null;
   tail: N | null;
-  compare: CompareType;
+  compare: Comparator;
 
   add(value: unknown): void;
   prepend(value: unknown): void;

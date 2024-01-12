@@ -1,7 +1,7 @@
 import LinkedListNode from './LinkedListNode';
 import { ILinkedList } from '../../types/structures/ILinkedList';
 import { ILinkedListNode } from '../../types/structures/ILinkedListNode';
-import Comparator from '../../utils/Comparator';
+import Comparator, { CompareObjectType } from '../../utils/Comparator';
 
 export default class LinkedList implements ILinkedList {
   head: ILinkedListNode | null = null;
@@ -10,7 +10,7 @@ export default class LinkedList implements ILinkedList {
 
   compare;
 
-  constructor(compareCallback?) {
+  constructor(compareCallback?: CompareObjectType<object>) {
     this.head = null;
     this.tail = null;
 
@@ -168,14 +168,14 @@ export default class LinkedList implements ILinkedList {
     return true;
   }
 
-  fromArray(data) {
+  fromArray(data: unknown[]) {
     data.forEach((item) => this.add(item));
 
     return this;
   }
 
   toArray() {
-    const linkedListArray = [];
+    const linkedListArray: unknown[] = [];
 
     if (this.head === null) {
       return linkedListArray;

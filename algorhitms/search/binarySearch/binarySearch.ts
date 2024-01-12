@@ -1,9 +1,9 @@
-import Comparator, { CompareType } from '../../../utils/Comparator';
+import Comparator, { CompareObjectType } from '../../../utils/Comparator';
 
 export default function binarySearch<T>(
   input: T[],
   searchValue: T,
-  compareCallback?: CompareType,
+  compareCallback?: CompareObjectType<object>,
 ): number {
   const comparator = new Comparator(compareCallback);
   let startIndex = 0;

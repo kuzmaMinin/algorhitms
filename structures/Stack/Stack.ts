@@ -12,7 +12,7 @@ export default class Stack implements IStack {
     return this.isEmpty() ? null : this.linkedList.head?.value;
   }
 
-  push(value) {
+  push<T>(value: T) {
     this.linkedList.add(value);
   }
 

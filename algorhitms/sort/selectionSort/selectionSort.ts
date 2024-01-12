@@ -1,8 +1,8 @@
-import Comparator, { CompareType } from '../../../utils/Comparator';
+import Comparator, { CompareObjectType } from '../../../utils/Comparator';
 
 export default function selectionSort<T>(
   input: T[],
-  compareCallback?: CompareType,
+  compareCallback?: CompareObjectType<object>,
 ): T[] {
   const arr = [...input];
   const compare = new Comparator(compareCallback);
@@ -17,7 +17,7 @@ export default function selectionSort<T>(
     }
 
     if (minIndex !== i) {
-      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+      [arr[i], arr[minIndex]] = [(arr[minIndex] as T), (arr[i] as T)];
     }
   }
 

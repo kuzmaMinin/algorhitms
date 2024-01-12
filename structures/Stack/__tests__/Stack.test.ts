@@ -6,8 +6,8 @@ describe('testing Stack structure methods', () => {
     stack.push(1);
     stack.push(2);
 
-    expect(stack.linkedList.head.value).toBe(1);
-    expect(stack.linkedList.head.next.value).toBe(2);
+    expect(stack.linkedList.head?.value).toBe(1);
+    expect(stack.linkedList.head?.next?.value).toBe(2);
   });
 
   test('check Stack.pop() method', () => {
@@ -16,7 +16,7 @@ describe('testing Stack structure methods', () => {
     stack.push(2);
     stack.pop();
 
-    expect(stack.linkedList.head.next).toBeNull();
+    expect(stack.linkedList.head?.next).toBeNull();
   });
 
   test('check Stack.peek() method', () => {

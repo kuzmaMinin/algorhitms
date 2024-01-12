@@ -12,7 +12,7 @@ export default class Queue implements IQueue {
     return this.isEmpty() ? null : this.linkedList.head?.value;
   }
 
-  enqueue(value) {
+  enqueue<T>(value: T) {
     this.linkedList.add(value);
   }
 
